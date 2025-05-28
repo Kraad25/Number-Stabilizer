@@ -8,7 +8,12 @@ actions = [-1, 1] # Possible actions
 alpha = 0.1 # Learning rate
 gamma = 0.9 # Discount factor
 epsilon = 0.2 # Exploration rate
-Q = {}  #(state, action) -> Q-value
+
+if os.path.exists('q_table.pkl'):
+    with open('q_table.pkl', 'rb') as f:
+        Q = pickle.load(f)
+else:
+    Q = {}  #(state, action) -> Q-value
 
 def choose_action(state):
     if random.random() < epsilon:
@@ -47,5 +52,8 @@ for episode in range(episodes):
         
         state = next_state
         steps += 1
+
+with open('q_table.pkl', 'wb') as f:
+    pickle.dump(Q, f)
 
 print(f"\nOut of {episodes} episodes, succeeded in {success_count} episodes.")

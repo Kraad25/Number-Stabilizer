@@ -6,7 +6,7 @@ class NumberStabilizer:
         self.state = start_number
         
     def set_state(self):
-        return random.randint(-5, 5)
+        return random.randint(-10, 10)
              
     def reset(self, value=None):
         self.state = value if value is not None else self.set_state()
