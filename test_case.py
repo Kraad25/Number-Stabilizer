@@ -11,9 +11,6 @@ with open('q_table.pkl', 'rb') as f:
     Q = pickle.load(f)
 
 actions = [-1, 1]  # Possible actions
-alpha = 0.1  # Learning rate
-gamma = 0.9  # Discount factor
-epsilon = 0.0  # No exploration
 
 stabilizer = NumberStabilizer()
 state = stabilizer.reset()
